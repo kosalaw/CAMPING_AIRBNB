@@ -227,7 +227,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
-  x86_64-darwin-20
+  ruby
 
 DEPENDENCIES
   autoprefixer-rails (= 10.2.5)
@@ -259,4 +259,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.16
+   1.17.2
