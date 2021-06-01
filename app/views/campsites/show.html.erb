@@ -11,10 +11,9 @@
 <%= simple_form_for [@campsite, @booking] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
-<!--   needs to be fixed -->
-  <%= f.input :total_price %>
-  <%= f.input :number_of_guest %>
+  <%= f.input :number_of_guest, as: :numeric %>
   <%= f.submit %>
 <% end %>
 
 <%= link_to "Back to Campsites", campsites_path %>
+
