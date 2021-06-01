@@ -1,3 +1,7 @@
+<%= link_to "Add new campsite", new_campsite_path %>
+<%= link_to "Back to Campsites", campsites_path %>
+<hr>
+
 <h3>My Bookings</h3>
 <% @bookings.each do |booking| %>
   <%= booking.start_date %>
