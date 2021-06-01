@@ -1,11 +1,13 @@
 <%= link_to "Back to Campsites", campsites_path %>
 <hr>
 
-<%= simple_form_for(@campsite) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :description %>
-  <%= f.input :price_per_night %>
-  <%= f.input :capacity %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= simple_form_for(@campsite) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    <%= f.input :price_per_night %>
+    <%= f.input :capacity %>
+    <%= f.submit %>
+  <% end %>
+</div>

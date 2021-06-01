@@ -9,16 +9,14 @@
 
 <hr>
 
-<ul>
-<% @campsites.each do |campsite| %>
-  <li>
-    <h3>name: <%= link_to campsite.name, campsite_path(campsite.id)%></h3>
-    <h4>address: <%= campsite.address %></h4>
-    <h4>description: <%= campsite.description %></h4>
-    <h4>Price per night: <%= campsite.price_per_night %></h4>
-    <h4>Guest capacity: <%= campsite.capacity %></h4>
-  </li>
-<% end %>
-</ul>
-
-
+<div class="container">
+  <% @campsites.each do |campsite| %>
+    <div class="card">
+      <h3>name: <%= link_to campsite.name, campsite_path(campsite.id)%></h3>
+      <h4>address: <%= campsite.address %></h4>
+      <h4>description: <%= campsite.description %></h4>
+      <h4>Price per night: <%= campsite.price_per_night %></h4>
+      <h4>Guest capacity: <%= campsite.capacity %></h4>
+    </div>
+  <% end %>
+</div>
