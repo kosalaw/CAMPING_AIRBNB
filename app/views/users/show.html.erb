@@ -1,0 +1,42 @@
+<h3>My Bookings</h3>
+<% @bookings.each do |booking| %>
+  <%= booking.start_date %>
+  <%= booking.end_date %>
+  <p>
+    Number of Nights: <%= booking.end_date - booking.start_date %>
+  </p>
+  <%= booking.total_price %>
+  <%= booking.number_of_guest %>
+  <%= booking.status %>
+<% end %>
+
+<hr>
+<h3>My Campsites</h3>
+<% @campsites.each do |campsite| %>
+  <%= campsite.name %>
+  <%= campsite.address %>
+  <%= campsite.description %>
+  <%= campsite.price_per_night %>
+  <%= campsite.capacity %>
+<% end %>
+
+<hr>
+<h3>All Campsites bookings</h3>
+<% @my_campsites_bookings.each do |campsite_booking| %>
+  <%= campsite_booking.start_date %>
+  <%= campsite_booking.end_date %>
+  <p>
+    Number of Nights: <%= campsite_booking.end_date - campsite_booking.start_date %>
+  </p>
+  <%= campsite_booking.total_price %>
+  <%= campsite_booking.number_of_guest %>
+  <% if campsite_booking.status.nil? %>
+    <p>pending</p>
+  <% elsif campsite_booking.status == true %>
+    <p>Confirmed</p>
+  <% elsif campsite_booking.status == false %>
+    <p>Declined</p>
+  <% end %>
+<% end %>
+
+<hr>
