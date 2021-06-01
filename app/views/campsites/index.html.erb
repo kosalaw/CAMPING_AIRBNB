@@ -1,0 +1,9 @@
+<h1>Campsites</h1>
+
+<% @campsites.each do |campsite| %>
+  <%= campsite.name %>
+  <%= campsite.address %>
+  <%= campsite.description %>
+  <%= campsite.price_per_night %>
+  <%= campsite.capacity %>
+<% end %>

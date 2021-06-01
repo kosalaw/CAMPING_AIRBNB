@@ -6,6 +6,7 @@ class CampsitesController < ApplicationController
 
   def show
     @campsite = Campsite.find(params[:id])
+    @booking = Booking.new
   end
 
   def new

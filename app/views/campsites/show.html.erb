@@ -1,0 +1,15 @@
+<%= @campsite.name %>
+<%= @campsite.address %>
+<%= @campsite.description %>
+<%= @campsite.price_per_night %>
+<%= @campsite.capacity %>
+
+<h1>book <%=@campsite.name%> </h1>
+<%= simple_form_for [@campsite, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+<!--   needs to be fixed -->
+  <%= f.input :total_price %>
+  <%= f.input :number_of_guest %>
+  <%= f.submit %>
+<% end %>
