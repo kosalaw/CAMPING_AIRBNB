@@ -1,8 +1,11 @@
-<%= @campsite.name %>
-<%= @campsite.address %>
-<%= @campsite.description %>
-<%= @campsite.price_per_night %>
-<%= @campsite.capacity %>
+<%= link_to "Back to Campsites", campsites_path %>
+<hr>
+
+<h2>name: <%= @campsite.name %></h2>
+<h4>address: <%= @campsite.address %></h4>
+<h4>description: <%= @campsite.description %></h4>
+<h4>Price per night: <%= @campsite.price_per_night %></h4>
+<h4>Guest capacity: <%= @campsite.capacity %></h4>
 
 <h1>book <%=@campsite.name%> </h1>
 <%= simple_form_for [@campsite, @booking] do |f| %>
@@ -12,4 +15,5 @@
   <%= f.submit %>
 <% end %>
 
-<!-- add total price -->
+<%= link_to "Back to Campsites", campsites_path %>
+

@@ -1,9 +1,18 @@
 <h1>Campsites</h1>
+<%= link_to "Add new campsite", new_campsite_path %>
+<%= link_to "My account",  my_account_path(current_user) %>
+<hr>
 
+<ul>
 <% @campsites.each do |campsite| %>
-  <%= campsite.name %>
-  <%= campsite.address %>
-  <%= campsite.description %>
-  <%= campsite.price_per_night %>
-  <%= campsite.capacity %>
+  <li>
+    <h3>name: <%= link_to campsite.name, campsite_path(campsite.id)%></h3>
+    <h4>address: <%= campsite.address %></h4>
+    <h4>description: <%= campsite.description %></h4>
+    <h4>Price per night: <%= campsite.price_per_night %></h4>
+    <h4>Guest capacity: <%= campsite.capacity %></h4>
+  </li>
 <% end %>
+</ul>
+
+
