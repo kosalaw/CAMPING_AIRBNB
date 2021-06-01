@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :campsites do
-    resources :bookings, only: [:new]
+    resources :bookings, only: [:create]
   end
-  resources :bookings, only: [:create, :update, :destroy]
+  resources :bookings, only: [:update, :destroy]
   get '/my_account', to: 'users#show', as: 'my_account'
 end
