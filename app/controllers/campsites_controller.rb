@@ -1,2 +1,2 @@
-class CampsitesController < ApplicationController
+class CampsitesController < ApplicationControllerx
 end
