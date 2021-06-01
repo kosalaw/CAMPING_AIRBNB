@@ -1,0 +1,8 @@
+<nav class="navbar">
+    <h1>CAMPING AIRBNB</h1>
+    <% if user_signed_in? %>
+      <h2 id="user-welcome">Welcome <%= current_user.email %><h2>
+    <% else %>
+      <h2>Register/Login</h2>
+    <% end %>
+</nav>

@@ -1,12 +1,27 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar {
+  color: white;
+  background-color: black;
+  h1 {
+    margin: 15px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 28px;
+  }
+  h2 {
+    margin: 15px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+#home-nav {
+  h1 {
+    margin: 15px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 28px;
+  }
+  h2 {
+    margin: 15px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+  }
 }

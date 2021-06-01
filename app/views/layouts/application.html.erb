@@ -12,9 +12,19 @@
   </head>
 
   <body>
+    <div>
+    <% if controller_name != 'pages' %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
+   
+
+    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
     <%= yield %>
+    </div>
   </body>
 </html>
 
