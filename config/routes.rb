@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   resources :bookings, only: [:update, :destroy]
-  get '/my_account', to: 'users#show', as: 'my_account'
+  get '/my_account/:id', to: 'users#show', as: 'my_account'
 end
