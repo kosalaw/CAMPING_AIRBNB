@@ -13,7 +13,7 @@
       </li>
       <% if user_signed_in? %>
       <li class="nav-item"><a class="nav-link" <%= link_to "My Account | ",  my_account_path(current_user) %> </a></li>
-      <li class="nav-item"><a class="nav-link" <%= link_to "Add Campsite | ",  new_campsite_path %> </a></li>
+      <li class="nav-item"><a class="nav-link" <%= link_to "Add Campsite ",  new_campsite_path %> </a></li>
     <% else %>
       <li class="nav-item"><a class="nav-link" href="/users/sign_up">Register | </a></li>
       <li class="nav-item"><a class="nav-link" href="/users/sign_in">Login | </a></li>
