@@ -1,16 +1,17 @@
-<div class="container d-flex justify-content-center">
-  <div class="row">
-    <h1 class="camp-h1">List of all Campsites</h1>
-  </div>
-</div>
+
 <div class="container text-dark">
+<div class="row">
   <% @campsites.each do |campsite| %>
-    <div class="card">
-      <h3>name: <%= link_to campsite.name, campsite_path(campsite.id)%></h3>
-      <h4>address: <%= campsite.address %></h4>
-      <h4>description: <%= campsite.description %></h4>
-      <h4>Price per night: <%= campsite.price_per_night %></h4>
-      <h4>Guest capacity: <%= campsite.capacity %></h4>
+    <div class="col-sm-4 mb-5">
+      <div class="card">
+      <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= campsite.name %></h5>
+          <p class="card-text">Address: <%= campsite.address %></p>
+           <h5 class="card-trip-pricing text-center">Price: £<%= campsite.price_per_night %>0</h5> 
+          <a href="#" class="btn-lg btn-block btn-primary text-center">More information</a>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
