@@ -1,16 +1,35 @@
 
 <div class="container">
-  <h2>name: <%= @campsite.name %></h2>
-  <h4>address: <%= @campsite.address %></h4>
-  <h4>description: <%= @campsite.description %></h4>
-  <h4>Price per night: <%= @campsite.price_per_night %></h4>
-  <h4>Guest capacity: <%= @campsite.capacity %></h4>
 
-  <h1>book <%=@campsite.name%> </h1>
-  <%= simple_form_for [@campsite, @booking] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :number_of_guest, as: :numeric %>
-    <%= f.submit %>
-  <% end %>
+  <div class="campsite-header" >
+    <h1><%= @campsite.name %></h1>
+    <p><%= @campsite.address %></p>
+  </div>
+
+  <div class="row">
+    <div class="col-7">
+              
+          
+          <div class="campsite-img">
+            <img src="/assets/camping-43.jpg" alt="campsite-" />
+          </div>
+          <br>
+          <p>Max Guests <%= @campsite.capacity %></p>
+          <p><%= @campsite.description %></p>
+          
+          
+     </div>
+     
+     <div class="col">
+            <div class="booking-card">
+            <h4> Book <%=@campsite.name%> for <%= @campsite.price_per_night %> / night</h4>
+            <%= simple_form_for [@campsite, @booking] do |f| %>
+              <%= f.input :start_date, as: :date, html5: true %>
+              <%= f.input :end_date, as: :date, html5: true %>
+              <%= f.input :number_of_guest, :collection => 1..@campsite.capacity, :prompt => "Guests"%>
+              <%= f.submit "Reserve", :class => "camp-book-bttn"%>
+            <% end %>
+          </div>
+      </div>
+   </div>
 </div>
