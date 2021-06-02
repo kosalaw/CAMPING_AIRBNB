@@ -2,20 +2,23 @@
 <h3 class="text-white">My Bookings</h3>
 <div class="row">
     <% @bookings.each do |booking| %>
-      <div class="col-3">
-        <div class="card m-3 p-3">
-          <h5>start date</h5>
-          <p><%= booking.start_date %></p>
-          <h5>end date:</h5>
-          <p><%= booking.end_date %></p>
-          <h5>Number of Nights:</h5>
-          <p><%= (booking.end_date - booking.start_date).to_i %></p>
-          <h5>Total Price:</h5>
-          <p><%= booking.total_price %></p>
-          <h5>Number of Guest</h5>
-          <p><%= booking.number_of_guest %></p>
-          <h5>Status</h5>
-          <p><%= booking.status %></p>
+      <div class="col-sm-4 mb-5">
+        <div class="card">
+          <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+          <div class="card-body">
+            <h5>Start Date</h5>
+            <p><%= booking.start_date %></p>
+            <h5>End Date:</h5>
+            <p><%= booking.end_date %></p>
+            <h5>Number of Nights:</h5>
+            <p><%= (booking.end_date - booking.start_date).to_i %></p>
+            <h5>Total Price:</h5>
+            <p><%= booking.total_price %></p>
+            <h5>Number of Guest</h5>
+            <p><%= booking.number_of_guest %></p>
+            <h5>Status</h5>
+            <p><%= booking.status %></p>
+          </div>
         </div>
       </div>
     <% end %>
@@ -26,18 +29,21 @@
 <h3 class="text-white" >My Campsites</h3>
 <div class="row">
     <% @campsites.each do |campsite| %>
-      <div class="col-3">
-        <div class="card m-3 p-3">
-          <h5>Name:</h5>
-          <p><%= campsite.name %></p>
-          <h5>Address:</h5>
-          <p><%= campsite.address %></p>
-          <h5>Description:</h5>
-          <p><%= campsite.description %><p>
-          <h5>Price per night:</h5>
-          <p><%= campsite.price_per_night %><p>
-          <h5>Capacity:</h5>
-          <p><%= campsite.capacity %><p>
+      <div class="col-sm-4 mb-5">
+        <div class="card">
+          <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+          <div class="card-body">
+            <h5>Name:</h5>
+            <p><%= campsite.name %></p>
+            <h5>Address:</h5>
+            <p><%= campsite.address %></p>
+            <h5>Description:</h5>
+            <p><%= campsite.description %><p>
+            <h5>Price per Night:</h5>
+            <p><%= campsite.price_per_night %><p>
+            <h5>Capacity:</h5>
+            <p><%= campsite.capacity %><p>
+          </div>
         </div>
       </div>
     <% end %>
@@ -48,26 +54,29 @@
 <h3 class="text-white">All Campsites bookings</h3>
 <div class="row">
     <% @my_campsites_bookings.each do |campsite_booking| %>
-      <div class="col-3">
-        <div class="card m-3 p-3">
-          <h5>Start date</h5>
-          <p><%= campsite_booking.start_date %></p>
-          <h5>End date</h5>
-          <p><%= campsite_booking.end_date %></p>
-          <p>Number of Nights:</p>
-          <p><%= (campsite_booking.end_date - campsite_booking.start_date).to_i %></p>
-          <h5>Total price</h5>
-          <p><%= campsite_booking.total_price %></p>
-          <h5>Number of guest</h5>
-          <p><%= campsite_booking.number_of_guest %></p>
-          <h5>Status</h5>
-          <% if campsite_booking.status.nil? %>
-            <p>pending</p>
-          <% elsif campsite_booking.status == true %>
-            <p>Confirmed</p>
-          <% elsif campsite_booking.status == false %>
-            <p>Declined</p>
-          <% end %>
+      <div class="col-sm-4 mb-5">
+        <div class="card">
+            <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+            <div class="card-body">
+            <h5>Start date</h5>
+            <p><%= campsite_booking.start_date %></p>
+            <h5>End date</h5>
+            <p><%= campsite_booking.end_date %></p>
+            <p>Number of Nights:</p>
+            <p><%= (campsite_booking.end_date - campsite_booking.start_date).to_i %></p>
+            <h5>Total price</h5>
+            <p><%= campsite_booking.total_price %></p>
+            <h5>Number of guest</h5>
+            <p><%= campsite_booking.number_of_guest %></p>
+            <h5>Status</h5>
+            <% if campsite_booking.status.nil? %>
+              <p>pending</p>
+            <% elsif campsite_booking.status == true %>
+              <p>Confirmed</p>
+            <% elsif campsite_booking.status == false %>
+              <p>Declined</p>
+            <% end %>
+          </div>
       </div>
     </div>
     <% end %>

@@ -1,3 +1,8 @@
+<style>
+  a {
+    color: white;
+  }
+</style>
 
 <div class="container text-dark">
 <div class="row">
@@ -9,7 +14,7 @@
           <h5 class="card-title"><%= campsite.name %></h5>
           <p class="card-text">Address: <%= campsite.address %></p>
            <h5 class="card-trip-pricing text-center">Price: £<%= campsite.price_per_night %>0</h5> 
-          <a href="#" class="btn-lg btn-block btn-primary text-center">More information</a>
+          <button class="btn-lg btn-block btn-primary text-center"><%= link_to "More info", campsite_path(campsite.id)%></button>
         </div>
       </div>
     </div>
