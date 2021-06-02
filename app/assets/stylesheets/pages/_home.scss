@@ -1,14 +1,15 @@
 .banner {
   background-image: image-url("bg.png");
   position: sticky;
-  height: 100vh;
+  height: calc(100vh - 96px);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-top: -40px;
 }
 
 body {
+  font-family: 'Varela Round', sans-serif;
   color: white;
   background-color: black;
-  font-family: 'Varela Round', sans-serif;
 }
