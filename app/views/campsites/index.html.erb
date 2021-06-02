@@ -1,9 +1,9 @@
-<h1>Campsites</h1>
-<%= link_to "Add new campsite", new_campsite_path %>
-<%= link_to "My account",  my_account_path(current_user) %>
-<hr>
-
-<div class="container">
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <h1 class="camp-h1">List of all Campsites</h1>
+  </div>
+</div>
+<div class="container text-dark">
   <% @campsites.each do |campsite| %>
     <div class="card">
       <h3>name: <%= link_to campsite.name, campsite_path(campsite.id)%></h3>

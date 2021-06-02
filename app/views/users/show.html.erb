@@ -1,9 +1,6 @@
-<%= link_to "Add new campsite", new_campsite_path %>
-<%= link_to "Back to Campsites", campsites_path %>
-
-<div class="container">
+<div class="container text-dark">
 <div class="row">
-    <h3>My Bookings</h3>
+    <h3 class="text-white">My Bookings</h3>
     <% @bookings.each do |booking| %>
       <div class="col-3">
         <div class="card m-3 p-3">
@@ -25,9 +22,9 @@
 </div>
 </div>
 
-<div class="container">
+<div class="container text-dark">
 <div class="row">
-    <h3>My Campsites</h3>
+    <h3 class="text-white" >My Campsites</h3>
     <% @campsites.each do |campsite| %>
       <div class="col-3">
         <div class="card m-3 p-3">
@@ -47,9 +44,9 @@
 </div>
 </div>
 
-<div class="container">
+<div class="container text-dark">
 <div class="row">
-    <h3>All Campsites bookings</h3>
+    <h3 class="text-white">All Campsites bookings</h3>
     <% @my_campsites_bookings.each do |campsite_booking| %>
       <div class="col-3">
         <div class="card m-3 p-3">
