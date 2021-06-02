@@ -20,6 +20,9 @@
 
 require 'faker'
 
+Booking.destroy_all
+Campsite.destroy_all
+
 # users who own Campsite
 5.times {
   user = User.create!(email: Faker::Internet.email, password: "123456")
@@ -28,7 +31,7 @@ require 'faker'
     campsite = Campsite.create!({
       name: Faker::Company.name,
       address: Faker::Address.full_address,
-      description: Faker::Lorem.sentence,
+      description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
       price_per_night: rand(8..15),
       capacity: rand(5..8),
       user: user

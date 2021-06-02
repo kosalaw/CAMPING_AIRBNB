@@ -11,18 +11,18 @@
               
           
           <div class="campsite-img">
-            <img src="/assets/camping-43.jpg" alt="campsite-" />
+            <img src="https://images.unsplash.com/photo-1536028943632-1b302c2761b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIyNjQ0MDMz&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit" alt="campsite-" />
           </div>
           <br>
-          <p>Max Guests <%= @campsite.capacity %></p>
-          <p><%= @campsite.description %></p>
+          <p>Max Guests: <%= @campsite.capacity %></p>
+          <p>Description: <%= @campsite.description %></p>
           
           
      </div>
      
      <div class="col">
             <div class="booking-card">
-            <h4> Book <%=@campsite.name%> for <%= @campsite.price_per_night %> / night</h4>
+            <h4> Book <%=@campsite.name%> for £<%= (@campsite.price_per_night).to_i %> / night</h4>
             <%= simple_form_for [@campsite, @booking] do |f| %>
               <%= f.input :start_date, as: :date, html5: true %>
               <%= f.input :end_date, as: :date, html5: true %>
