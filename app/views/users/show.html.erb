@@ -4,7 +4,7 @@
     <% @bookings.each_with_index do |booking, i| %>
       <div class="col-sm-4 mb-5">
         <div class="card">
-          <img class="card-img-top" src="https://source.unsplash.com/featured/?camp/<%= i %>" alt="Card image cap">
+          <img class="card-img-top" src="https://source.unsplash.com/featured/?camp/<%= rand(100) %>" alt="Card image cap">
           <div class="card-body">
             <h5>Start Date</h5>
             <p><%= booking.start_date %></p>
