@@ -1,6 +1,12 @@
 <h1>Campsites</h1>
 <%= link_to "Add new campsite", new_campsite_path %>
-<%= link_to "My account",  my_account_path(current_user) %>
+
+<% if current_user.nil? %>
+  <%= link_to "login/register", new_user_session_path %>
+<% else %>
+  <%= link_to "My account",  my_account_path(current_user) %>
+<% end %>
+
 <hr>
 
 <div class="container">
