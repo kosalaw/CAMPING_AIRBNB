@@ -30,7 +30,7 @@ require 'faker'
       address: Faker::Address.full_address,
       description: Faker::Lorem.sentence,
       price_per_night: rand(8..15),
-      capacity: rand(1..4),
+      capacity: rand(5..8),
       user: user
     })
 
