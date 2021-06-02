@@ -1,5 +1,42 @@
-.card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// .card {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+// .card-trip {
+//   overflow: hidden;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+// }
+
+// .card-trip > img {
+//   height: 200px;
+//   width: 100%;
+//   object-fit: cover;
+// }
+
+// .card-trip h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
+
+// .card-trip p {
+//   font-size: 12px;
+//   opacity: .7;
+//   margin: 0;
+// }
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card-title {
+  font-weight: 800;
+  font-size: 26px;
+  margin-bottom: 0px;
+}
+
+.card-trip-pricing {
+  font-size: 24px
 }
