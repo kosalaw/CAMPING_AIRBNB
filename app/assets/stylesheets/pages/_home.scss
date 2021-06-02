@@ -1,7 +1,11 @@
-.banner {
+body {
   background-image: url(bg.png);
+  position: sticky;
   height: 100vh;
   background-position: center;
+  background-size: cover;
   font-family: 'Varela Round', sans-serif;
   color: white;
+  background-repeat: no-repeat;
+  background-color: black;
 }

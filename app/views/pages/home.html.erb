@@ -1,15 +1,7 @@
 <div class="banner">
-  <div id="home-nav" class="d-flex justify-content-between">
-    <h1>CAMPING AIRBNB</h1>
-    <% if current_user.nil? %>
-      <h2>Register/Login</h2>
-    <% else %>
-      <h2 id="user-welcome">Welcome <%= current_user.email %><h2>
-    <% end %>
-  </div>
-  <div class="container d-flex justify-content-center my-4">
+  <div class="container d-flex justify-content-center my-5">
     <div class="row">
-      <form>
+      <form href="/campsites">
         <div class="form-row align-items-center d-flex justify-content-center">
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="inlineFormWhereTo">Where To</label>
@@ -34,7 +26,7 @@
             </div>
           </div>
           <div class="col-sm-1 my-1">
-            <button type="submit" class="btn btn-white"><a href="/campsites"><i class="fas fa-search"></i></a></button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </form>

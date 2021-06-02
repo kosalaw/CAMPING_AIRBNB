@@ -1,27 +1,36 @@
 .navbar {
   color: white;
-  background-color: black;
+  background-color:#040F06;
   h1 {
     margin: 15px;
     font-family: 'Russo One', sans-serif;
-    font-size: 28px;
+    font-size: 30px;
+    color: white;
   }
-  h2 {
-    margin: 15px;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 20px;
+  ul a{
+    font-size: 24px;
+    color: white;
+
+    margin-right: 6px;
   }
 }
-
-#home-nav {
-  h1 {
-    margin: 15px;
-    font-family: 'Russo One', sans-serif;
-    font-size: 28px;
+ .navbar-light .navbar-toggler {
+   color: rgb(255, 255, 255);
+   border-color: rgb(255, 252, 252);
+ }
+#add-camp-container {
+  background-color: black;
+  opacity: 0.9;
+  border-radius: 20px;
+  input{
+    padding: 10px;
+    margin: 3px 0px;
   }
-  h2 {
-    margin: 15px;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 20px;
-  }
+  
+}
+.camp-h1 {
+  font-weight: 600;
+}
+h5 {
+  color: #040F06;
 }
