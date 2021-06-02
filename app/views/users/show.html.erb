@@ -1,10 +1,10 @@
 <div class="container text-dark">
 <h3 class="text-white">My Bookings</h3>
 <div class="row">
-    <% @bookings.each do |booking| %>
+    <% @bookings.each_with_index do |booking, i| %>
       <div class="col-sm-4 mb-5">
         <div class="card">
-          <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+          <img class="card-img-top" src="https://source.unsplash.com/featured/?camp/<%= i %>" alt="Card image cap">
           <div class="card-body">
             <h5>Start Date</h5>
             <p><%= booking.start_date %></p>
@@ -28,10 +28,10 @@
 <div class="container text-dark">
 <h3 class="text-white" >My Campsites</h3>
 <div class="row">
-    <% @campsites.each do |campsite| %>
+    <% @campsites.each_with_index do |campsite, i| %>
       <div class="col-sm-4 mb-5">
         <div class="card">
-          <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+          <img class="card-img-top" src="https://source.unsplash.com/featured/?camp/<%= i %>" alt="Card image cap">
           <div class="card-body">
             <h5>Name:</h5>
             <p><%= campsite.name %></p>
@@ -53,10 +53,10 @@
 <div class="container text-dark">
 <h3 class="text-white">All Campsites bookings</h3>
 <div class="row">
-    <% @my_campsites_bookings.each do |campsite_booking| %>
+    <% @my_campsites_bookings.each_with_index do |campsite_booking, i| %>
       <div class="col-sm-4 mb-5">
         <div class="card">
-            <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+            <img class="card-img-top" src="https://source.unsplash.com/featured/?camp/<%= i %>" alt="Card image cap">
             <div class="card-body">
             <h5>Start date</h5>
             <p><%= campsite_booking.start_date %></p>
