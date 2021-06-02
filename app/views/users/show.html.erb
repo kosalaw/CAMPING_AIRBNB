@@ -1,21 +1,21 @@
 <div class="container text-dark">
+<h3 class="text-white">My Bookings</h3>
 <div class="row">
-    <h3 class="text-white">My Bookings</h3>
     <% @bookings.each do |booking| %>
       <div class="col-3">
         <div class="card m-3 p-3">
           <h5>start date</h5>
-          <%= booking.start_date %>
+          <p><%= booking.start_date %></p>
           <h5>end date:</h5>
-          <%= booking.end_date %>
+          <p><%= booking.end_date %></p>
           <h5>Number of Nights:</h5>
-          <%= booking.end_date - booking.start_date %>
+          <p><%= (booking.end_date - booking.start_date).to_i %></p>
           <h5>Total Price:</h5>
-          <%= booking.total_price %>
+          <p><%= booking.total_price %></p>
           <h5>Number of Guest</h5>
-          <%= booking.number_of_guest %>
+          <p><%= booking.number_of_guest %></p>
           <h5>Status</h5>
-          <%= booking.status %>
+          <p><%= booking.status %></p>
         </div>
       </div>
     <% end %>
@@ -23,21 +23,21 @@
 </div>
 
 <div class="container text-dark">
+<h3 class="text-white" >My Campsites</h3>
 <div class="row">
-    <h3 class="text-white" >My Campsites</h3>
     <% @campsites.each do |campsite| %>
       <div class="col-3">
         <div class="card m-3 p-3">
           <h5>Name:</h5>
-          <%= campsite.name %>
+          <p><%= campsite.name %></p>
           <h5>Address:</h5>
-          <%= campsite.address %>
+          <p><%= campsite.address %></p>
           <h5>Description:</h5>
-          <%= campsite.description %>
+          <p><%= campsite.description %><p>
           <h5>Price per night:</h5>
-          <%= campsite.price_per_night %>
+          <p><%= campsite.price_per_night %><p>
           <h5>Capacity:</h5>
-          <%= campsite.capacity %>
+          <p><%= campsite.capacity %><p>
         </div>
       </div>
     <% end %>
@@ -45,21 +45,21 @@
 </div>
 
 <div class="container text-dark">
+<h3 class="text-white">All Campsites bookings</h3>
 <div class="row">
-    <h3 class="text-white">All Campsites bookings</h3>
     <% @my_campsites_bookings.each do |campsite_booking| %>
       <div class="col-3">
         <div class="card m-3 p-3">
           <h5>Start date</h5>
-          <%= campsite_booking.start_date %>
+          <p><%= campsite_booking.start_date %></p>
           <h5>End date</h5>
-          <%= campsite_booking.end_date %>
+          <p><%= campsite_booking.end_date %></p>
           <p>Number of Nights:</p>
-          <%= campsite_booking.end_date - campsite_booking.start_date %>
+          <p><%= (campsite_booking.end_date - campsite_booking.start_date).to_i %></p>
           <h5>Total price</h5>
-          <%= campsite_booking.total_price %>
+          <p><%= campsite_booking.total_price %></p>
           <h5>Number of guest</h5>
-          <%= campsite_booking.number_of_guest %>
+          <p><%= campsite_booking.number_of_guest %></p>
           <h5>Status</h5>
           <% if campsite_booking.status.nil? %>
             <p>pending</p>
