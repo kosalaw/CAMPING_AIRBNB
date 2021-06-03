@@ -17,7 +17,6 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(status: params[:confirmed] == "true")
-    raise
     redirect_to my_account_path(current_user)
   end
 
