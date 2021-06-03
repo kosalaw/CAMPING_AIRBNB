@@ -15,21 +15,63 @@
           </div>
           <br>
           <p>Max Guests: <%= @campsite.capacity %></p>
-          <p>Description: <%= @campsite.description %></p>
-          
+          <p>Description: <%= @campsite.description %></p>         
           
      </div>
      
-     <div class="col">
-            <div class="booking-card">
+      <div class="col">
+       <% if user_signed_in? && current_user == @campsite.user%>
+          <div class="booking-card">
+            <p>This is your campsite</p>
+            <p>Upcomming bookings for <%=@campsite.name%></p>
+            <% @campsite.bookings.each do |booking| %>
+              <div>
+                <div>
+                  <%= booking.start_date.strftime("%A, %b %d")%> - 
+                  <%= booking.end_date.strftime("%A, %b %d")%>
+                </div>
+                <div>
+                  <%= booking.number_of_guest%>
+                  <%= booking.user.email%>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+       <% else %>          
+          <div class="booking-card">
             <h4> Book <%=@campsite.name%> for £<%= (@campsite.price_per_night).to_i %> / night</h4>
             <%= simple_form_for [@campsite, @booking] do |f| %>
-              <%= f.input :start_date, as: :date, html5: true %>
+              <%= f.input :start_date, as: :date, html5: true, :label => "Language" %>
               <%= f.input :end_date, as: :date, html5: true %>
               <%= f.input :number_of_guest, :collection => 1..@campsite.capacity, :prompt => "Guests"%>
               <%= f.submit "Reserve", :class => "camp-book-bttn"%>
             <% end %>
           </div>
-      </div>
+        
+          <% if user_signed_in? && !current_user.bookings.where(campsite_id:@campsite.id).empty? %>
+              <div class="booking-card mt-3">
+              <p> You have booked campsite: <%=@campsite.name%> </p>    
+              <p> Tips before your arrived: </p>
+              <ol>
+                <li>PRACTICE SETTING UP THE TENT AT HOME</li>
+                <li>MAKE CAMPFIRE-FRIENDLY MEALS AHEAD OF TIME</li>
+                <li>BRING EXTRA PADDING</li>
+                <li>PACK GOOD COFFEE</li>
+                <li>WATERPROOF YOUR TENT</li>
+                <li>PACK CARFULLY & MAKE A LIST</li>
+                <li>TAKE ADVANTAGE OF CAMPSITE AMENITIES</li>
+                <li>LEAVE THE CAMPSITE AS YOU FOUND IT</li>
+                <li>ARRIVE IN DAYLIGHT</li>
+                <li>GET THE RIGHT PEGS</li>
+              </ol>
+              <div class="happy-camping d-flex">
+                <p>Happy Camping!!!</p>
+                <i class="fas fa-campground ml-2"></i>
+              </div>
+            </div>
+          <% end %>
+       </div>
+      <% end %>
    </div>
 </div>
