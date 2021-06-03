@@ -3,43 +3,48 @@
     color: white;
   }
 </style>
-
-
 <div class="container">
   <div class="mb-2 left-side" style="max-width: 600px;">
     <div class="row g-0">
       <% @campsites.each_with_index do |campsite, i| %>
         <%= link_to campsite_path(campsite.id) do %>
+
+
+
+
           <div class="card mb-3 p-0 border-radius-card">
-          <div class="row g-0">
-            <div class="col-md-5 mb-0 align-items-center">
-              <% if campsite.photo.attached? %>
-                <%= cl_image_tag campsite.photo.key, crop: :fill, class: "card-img-top" %>
-              <% else %>
-                <%= image_tag "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3300&q=80", alt: "Card image cap", width: 200, class: "card-img-top" %>
-              <% end %>
+            <div class="row g-0">
+              <div class="col-md-5 mb-0 align-items-center">
+                <% if campsite.photo.attached? %>
+                  <%= cl_image_tag campsite.photo.key, crop: :fill, class: "card-img-top" %>
+                <% else %>
+                  <%= image_tag "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3300&q=80", alt: "Card image cap", width: 200, class: "card-img-top" %>
+                <% end %>
+              </div>
+
+
+              <div class="col-md-7">
+                <div class="card-body mt-2 p-0 mb-0 ml-0">
+                  <h5 class="card-title d-flex justify-content-between mb-1 pb-0"><%= campsite.name %></h5>
+                  <p class="card-text mb-1 p-0"><small class="text-muted"><i class="fas fa-user-friends"></i>&nbsp;
+                  <%= campsite.capacity %> </small></p>
+                </div>
+
+                <div class="border-bottom-p">
+                </div>
+                
+                  <p class="card-text mb-1 p-0"><small class="text-muted"> <%= campsite.description %></small></p>        
+                <div class="card-body d-flex align-items-end ml-0 absolute-position">
+                  <h5 class="m-0">£<%= campsite.price_per_night %>0</h5>
+                </div>
+              </div>
             </div>
-            <div class="col-md-7">
-              <div class="card-body mt-2 p-0 mb-0 ml-0">
-                <h5 class="card-title d-flex justify-content-between mb-1 pb-0"><%= campsite.name %></h5>
-                <p class="card-text mb-1 p-0"><small class="text-muted"><i class="fas fa-user-friends"></i>&nbsp;
-                <%= campsite.capacity %> </small></p>
-              </div>
-              <div class="border-bottom-p">
-              </div>
-                <p class="card-text mb-1 p-0"><small class="text-muted"> <%= campsite.description %></small></p>        
-              <div class="card-body d-flex align-items-end ml-0 absolute-position">
-                <h5 class="m-0">£<%= campsite.price_per_night %>0</h5>
-              </div>
-            </div>
-          </div>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
-
 
 <div id="map"
      style="width: 100%; height: 600px;"
