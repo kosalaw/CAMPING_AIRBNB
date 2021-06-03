@@ -8,16 +8,16 @@
 
   <div class="row">
     <div class="col-7">
-              
-          
           <div class="campsite-img">
-            <img src="https://images.unsplash.com/photo-1536028943632-1b302c2761b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIyNjQ0MDMz&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit" alt="campsite-" />
+            <% if @campsite.photo.attached? %>
+              <%= cl_image_tag @campsite.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3300&q=80" alt="Card image cap">
+            <% end %>
           </div>
           <br>
           <p>Max Guests: <%= @campsite.capacity %></p>
           <p>Description: <%= @campsite.description %></p>
-          
-          
      </div>
      
      <div class="col">

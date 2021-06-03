@@ -9,7 +9,11 @@
   <% @campsites.each_with_index do |campsite, i| %>
     <div class="col-sm-4 mb-5">
       <div class="index-card card">
-      <img class="card-img-top" src="https://source.unsplash.com/featured/?camp/<%= i %>" alt="Card image cap">
+        <% if campsite.photo.attached? %>
+          <%= cl_image_tag campsite.photo.key, crop: :fill, class: "card-img-top" %>
+        <% else %>
+          <img class="card-img-top" src="https://source.unsplash.com/featured/?camp/<%= i %>" alt="Card image cap">
+        <% end %>
         <div class="card-body h-100">
           <div>
           <h5 class="card-title"><%= campsite.name %></h5>

@@ -26,7 +26,7 @@ class CampsitesController < ApplicationController
   private
 
   def campsite_params
-    params.require(:campsite).permit(:name, :address, :description, :price_per_night, :capacity)
+    params.require(:campsite).permit(:name, :address, :description, :price_per_night, :capacity, :photo)
   end
 
 
