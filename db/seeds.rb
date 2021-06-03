@@ -7,7 +7,7 @@ User.destroy_all
 
 puts "Creating users..."
 user_1 = User.create!(email: "test@test.com", password: "123456")
-user_2 = User.create!(email: Faker::Internet.email, password: "123456")
+user_2 = User.create!(email: "test2@test.com", password: "123456")
 user_3 = User.create!(email: Faker::Internet.email, password: "123456")
 user_4 = User.create!(email: Faker::Internet.email, password: "123456")
 user_5 = User.create!(email: Faker::Internet.email, password: "123456")
@@ -32,7 +32,7 @@ campsite_2 = Campsite.create!({
   description: "Nevada Beach Campground and Day Use Pavilion sits in the Lake Tahoe Basin of Nevada. Minutes from the bright blue water of Tahoe's eastern shores, campsites are nestled in a sparse forest of pine trees and evergreen shrubs. The lake and its sandy beaches provides ample recreation opportunities and restaurants and casinos are just moments away.",
   price_per_night: rand(8..15),
   capacity: rand(5..8),
-  user: user_2
+  user: user_1
   })
 campsite_2.photo.attach(io: file_2, filename: 'GettyImages-114565018-5c2fa1f046e0fb00016f3d95.jpg', content_type: 'image/jpg')
 
@@ -58,6 +58,27 @@ campsite_4 = Campsite.create!({
   })
 campsite_4.photo.attach(io: file_4, filename: 'california-big-sur-best-campgrounds-ventana-campground.jpg', content_type: 'image/jpg')
 
+file_5 = URI.open('https://playestacada.com/wp-content/uploads/sites/2/2018/07/estacada-009-1024x768.jpg')
+campsite_5 = Campsite.create!({
+  name: "Promontory Park Campground",
+  address: "40600 OR-224, Estacada, OR 97023, United States",
+  description: "Promontory Park is a family-friendly, alcohol-free campground on the North Fork Reservoir of the Clackamas River with a variety of camping options.",
+  price_per_night: rand(8..15),
+  capacity: rand(5..8),
+  user: user_3
+  })
+campsite_5.photo.attach(io: file_5, filename: 'estacada-009-1024x768.jpg', content_type: 'image/jpg')
+
+file_6 = URI.open('https://www.getoutwiththekids.co.uk/wp-content/uploads/formidable/13/Camping-1-1024x683.jpg')
+campsite_6 = Campsite.create!({
+  name: "Washington Caravan & Camping Park",
+  address: "Dingley Dell, London Rd, Washington, Pulborough RH20 4AJ",
+  description: "The 'Washington Caravan and Camping Park' is an idyllic site located at the foot of the stunning South Downs, overlooked by Chanctonbury Ring and between the two picturesque villages of Steyning and Storrington",
+  price_per_night: rand(8..15),
+  capacity: rand(5..8),
+  user: user_3
+  })
+campsite_6.photo.attach(io: file_6, filename: 'Camping-1-1024x683.jpg', content_type: 'image/jpg')
 
 puts "Creating bookings..."
 booking_1 = Booking.create!({
