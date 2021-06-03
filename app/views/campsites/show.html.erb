@@ -23,17 +23,17 @@
        <% if user_signed_in? && current_user == @campsite.user%>
           <div class="booking-card">
             <p>This is your campsite</p>
-            <p>Upcomming bookings for <%=@campsite.name%></p>
+            <p><b><i>Upcomming bookings for</i></b> <%=@campsite.name%></p>
             <% @campsite.bookings.each do |booking| %>
-              <div>
-                <div>
-                  <%= booking.start_date.strftime("%A, %b %d")%> - 
-                  <%= booking.end_date.strftime("%A, %b %d")%>
+              <div class="border-bottom mt-3">
+                <div class="owner-card d-flex">
+                  <p id="oc-bkn-dtls"><strong><i>Booked for:</i></strong>&nbsp;<%= booking.start_date.strftime("%A, %b %d")%> - 
+                  <%= booking.end_date.strftime("%A, %b %d")%> </p>
                 </div>
                 <div>
-                  <%= booking.number_of_guest%>
-                  <%= booking.user.email%>
-                </div>
+                <i class="fas fa-user-friends"></i>: <%= booking.number_of_guest%> <br />
+                <p> <strong><i> By </i></strong>&nbsp;<%= booking.user.email%> </p>
+                </div> 
               </div>
             <% end %>
 
