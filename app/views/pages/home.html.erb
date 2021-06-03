@@ -1,35 +1,43 @@
 <div class="banner">
   <div class="container d-flex justify-content-center my-5">
     <div class="row">
-      <form href="/campsites">
+
+      <form action="/campsites" accept-charset="UTF-8" method="get">
         <div class="form-row align-items-center d-flex justify-content-center">
           <div class="col-sm-3 my-1">
-            <label class="sr-only" for="inlineFormWhereTo">Where To</label>
-            <input type="text" class="form-control" id="inlineFormWhereTo" placeholder="Where to?" required>
+            <input type="text" name="location" id="location" class="form-control" placeholder="Location" required>
           </div>
           <div class="col-sm-3 my-1">
-            <label class="sr-only" for="inlineFormInputGroupFrom">From</label>
             <div class="input-group">
-              <input type="date" class="form-control" id="inlineFormInputGroupFrom" placeholder="From:" required>
+            <input type="date" name="start" id="start" class="form-control" placeholder="Start date" required>
             </div>
           </div>
           <div class="col-sm-3 my-1">
-            <label class="sr-only" for="inlineFormInputGroupTo">To</label>
             <div class="input-group">
-              <input type="date" class="form-control" id="inlineFormInputGroupTo" placeholder="To:" required>
+              <input type="date" name="end" id="end" class="form-control" placeholder="End date" required>
+
             </div>
           </div>
           <div class="col-sm-2 my-1">
-            <label class="sr-only" for="inlineFormInputGroupGuests">Guests</label>
             <div class="input-group">
-              <input type="number" class="form-control" id="inlineFormInputGroupGuests" placeholder="Guests" required>
+              <input type="number" name="guest" id="guest" class="form-control" placeholder="Guests" required>
             </div>
           </div>
           <div class="col-sm-1 my-1">
-            <a class="btn btn-primary" href="/campsites" style="color: white">Search</a>
+            <input type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="Search">
           </div>
         </div>
       </form>
+
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
