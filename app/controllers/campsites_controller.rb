@@ -1,19 +1,24 @@
 class CampsitesController < ApplicationController
 
   def index
-    p params
-
+    # HOMEPAGE search bar filtering
     if params[:location].present? #&& params[:guest].present?
       sql_query = " \
         campsites.address @@ :location \
         AND campsites.capacity >= :guest \
       "
       campsites = Campsite.where(sql_query, location: "%#{params[:location]}%", guest: params[:guest].to_i)
-
       @campsites = check_availability(params, campsites)
-
     else
       @campsites = Campsite.all
+
+      # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+      @markers = @campsites.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+      end
     end
   end
 
