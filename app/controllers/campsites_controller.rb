@@ -9,14 +9,27 @@ class CampsitesController < ApplicationController
       "
       campsites = Campsite.where(sql_query, location: "%#{params[:location]}%", guest: params[:guest].to_i)
       @campsites = check_availability(params, campsites)
+      p @campsites.class
+
+      # KEEP THIS LOOP! This one doesnt work if you use '.geocoded'!!!!
+      @markers = @campsites.map do |campsite|
+      {
+        lat: campsite.latitude,
+        lng: campsite.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { campsite: campsite })
+      }
+      end
+
     else
       @campsites = Campsite.all
+      p @campsites.class
 
-      # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
-      @markers = @campsites.geocoded.map do |flat|
+      # KEEP THIS LOOP AS WELL! This one DOES work if you use '.geocoded'!!!!
+      @markers = @campsites.geocoded.map do |campsite|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: campsite.latitude,
+        lng: campsite.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { campsite: campsite })
       }
       end
     end
