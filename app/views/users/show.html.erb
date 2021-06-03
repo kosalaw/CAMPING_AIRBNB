@@ -98,6 +98,8 @@
               <p><%= campsite_booking.total_price %></p>
               <h5>Number of guest</h5>
               <p><%= campsite_booking.number_of_guest %></p>
+              <h5>Customer's email:</h5>
+              <p> <%= campsite_booking.user.email %> </p>
               <h5>Status</h5>
               <% if campsite_booking.status.nil? %>
                 <p>Pending</p>
