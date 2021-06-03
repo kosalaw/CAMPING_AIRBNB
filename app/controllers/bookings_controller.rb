@@ -1,10 +1,11 @@
+
 class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @campsite = Campsite.find(params[:campsite_id])
     @booking.campsite = @campsite
-    numb_days =  (@booking.end_date - @booking.start_date).to_i
+    numb_days = (@booking.end_date - @booking.start_date).to_i
     @booking.total_price = @campsite.price_per_night * @booking.number_of_guest * numb_days
     if @booking.save
       redirect_to my_account_path(current_user)
@@ -14,6 +15,9 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    @booking.update(status: params[:confirmed] == "true")
+    redirect_to my_account_path(current_user)
   end
 
   def destroy
@@ -24,5 +28,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :number_of_guest, :status)
   end
-
 end
