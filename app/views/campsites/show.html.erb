@@ -1,11 +1,9 @@
 
 <div class="container">
-
   <div class="campsite-header" >
     <h1><%= @campsite.name %></h1>
     <p><%= @campsite.address %></p>
   </div>
-
   <div class="row">
     <div class="col-7">
           <div class="campsite-img">
@@ -19,7 +17,7 @@
           <p>Max Guests: <%= @campsite.capacity %></p>
           <p>Description: <%= @campsite.description %></p>
      </div>
-     
+
       <div class="col">
        <% if user_signed_in? && current_user == @campsite.user%>
           <div class="booking-card">
@@ -28,18 +26,17 @@
             <% @campsite.bookings.each do |booking| %>
               <div class="border-bottom mt-3">
                 <div class="owner-card d-flex">
-                  <p id="oc-bkn-dtls"><strong><i>Booked for:</i></strong>&nbsp;<%= booking.start_date.strftime("%A, %b %d")%> - 
+                  <p id="oc-bkn-dtls"><strong><i>Booked for:</i></strong>&nbsp;<%= booking.start_date.strftime("%A, %b %d")%> -
                   <%= booking.end_date.strftime("%A, %b %d")%> </p>
                 </div>
                 <div>
                 <i class="fas fa-user-friends"></i>: <%= booking.number_of_guest%> <br />
                 <p> <strong><i> By </i></strong>&nbsp;<%= booking.user.email%> </p>
-                </div> 
+                </div>
               </div>
             <% end %>
-
           </div>
-       <% else %>          
+       <% else %>
           <div class="booking-card">
             <h4> Book <%=@campsite.name%> for £<%= (@campsite.price_per_night).to_i %> / night</h4>
             <%= simple_form_for [@campsite, @booking] do |f| %>
@@ -49,10 +46,9 @@
               <%= f.submit "Reserve", :class => "camp-book-bttn"%>
             <% end %>
           </div>
-        
           <% if user_signed_in? && !current_user.bookings.where(campsite_id:@campsite.id).empty? %>
               <div class="booking-card mt-3">
-              <p> You have booked campsite: <%=@campsite.name%> </p>    
+              <p> You have booked campsite: <%=@campsite.name%> </p>
               <p> Tips before your arrived: </p>
               <ol>
                 <li>PRACTICE SETTING UP THE TENT AT HOME</li>
@@ -75,4 +71,16 @@
        </div>
       <% end %>
    </div>
+
+  <!-- MAP at bottom of page -->
+  <div class="col-12">
+    <div id="map"
+      style="width: 100%; height: 500px; border-radius: 4px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+
+
 </div>
