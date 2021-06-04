@@ -10,4 +10,12 @@ class Campsite < ApplicationRecord
   # geocode for map
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def rating
+    rating = 0
+    bookings.each do |booking|
+      rating += booking.review.rating
+    end
+    return rating
+  end
 end
