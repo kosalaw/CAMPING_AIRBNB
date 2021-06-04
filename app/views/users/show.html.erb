@@ -47,6 +47,15 @@
                       <p class="card-text mb-1 p-0"><small class="text-muted">From: <%= booking.start_date.strftime("%A, %b %d") %></small></p> 
                       <p class="card-text mb-1 p-0"><small class="text-muted">To: <%= booking.end_date.strftime("%A, %b %d") %></small></p>
                       <p class="card-text mb-1 p-0"><small class="text-muted">Number of Nights: <%= (booking.end_date - booking.start_date).to_i %></small></p>    
+                      <% unless booking.review.nil? %>
+                        <p class="text-muted" >
+                          review: <%= booking.review.rating %>
+                        </p>
+                      <% else %>
+                        <%= simple_form_for([booking, @review], html: { class: "review_form_#{index}" }) do |f| %>
+                          <%= f.input :rating, as: :select, collection: (1..5).to_a, label: "Rate your experience", input_html:{id: "review_rating_#{index}", class: "review_rating"} %>
+                        <% end %>
+                      <% end %>
                       <div class="card-body d-flex align-items-end ml-0 absolute-position">
                         <h5 class="m-0">£<%= booking.total_price %>0</h5>
                       </div>

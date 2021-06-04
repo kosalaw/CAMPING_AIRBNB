@@ -4,6 +4,6 @@ class UsersController < ApplicationController
     @bookings = @user.bookings
     @campsites = @user.campsites
     @my_campsites_bookings = @user.my_campsites_bookings
+    @review = Review.new
   end
-
 end
