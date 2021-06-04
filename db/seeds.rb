@@ -28,7 +28,7 @@ campsite_1.photo.attach(io: file_1, filename: 'pine-flats-campground.jpg', conte
 file_2 = URI.open('https://www.tripsavvy.com/thmb/szHuEuiYERlhXo58KYVfKDpQXVM=/2309x1299/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-114565018-5c2fa1f046e0fb00016f3d95.jpg')
 campsite_2 = Campsite.create!({
   name: "Nevada Beach Campground",
-  address: "Bittlers Rd, Zephyr Cove, NV 89448, United States",
+  address: "Spring Creek, NV 89815, United States",
   description: "Nevada Beach Campground and Day Use Pavilion sits in the Lake Tahoe Basin of Nevada. Minutes from the bright blue water of Tahoe's eastern shores, campsites are nestled in a sparse forest of pine trees and evergreen shrubs. The lake and its sandy beaches provides ample recreation opportunities and restaurants and casinos are just moments away.",
   price_per_night: rand(8..15),
   capacity: rand(5..8),
@@ -71,9 +71,9 @@ campsite_5.photo.attach(io: file_5, filename: 'estacada-009-1024x768.jpg', conte
 
 file_6 = URI.open('https://www.getoutwiththekids.co.uk/wp-content/uploads/formidable/13/Camping-1-1024x683.jpg')
 campsite_6 = Campsite.create!({
-  name: "Washington Caravan & Camping Park",
-  address: "Dingley Dell, London Rd, Washington, Pulborough RH20 4AJ",
-  description: "The 'Washington Caravan and Camping Park' is an idyllic site located at the foot of the stunning South Downs, overlooked by Chanctonbury Ring and between the two picturesque villages of Steyning and Storrington",
+  name: "Camp Fire Pit",
+  address: "Shore Loop Rd, Seattle, WA 98118, United States",
+  description: "The 17-acre state park offers 2,300 feet of Pacific Ocean beachfront and activities that include picnicking, camping, fishing, swimming, clam digging, and beachcombing.",
   price_per_night: rand(8..15),
   capacity: rand(5..8),
   user: user_3
