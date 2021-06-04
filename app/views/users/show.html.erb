@@ -19,7 +19,7 @@
         <% @bookings.each do |booking| %>
           <div class="col-sm-6 my-3">
             <%= link_to campsite_path(booking.campsite.id) do %>
-              <div class="card mb-0 p-0 border-radius-card border-shadow-all">
+              <div class="card mb-0 p-0 border-radius-card border-shadow-all" style="height:236px">
                 <div class="row g-0">
                   <div class="col-md-5 mb-0 align-items-center">
                     <% if booking.campsite.photo.attached? %>
@@ -30,7 +30,7 @@
                   </div>
                   <div class="col-md-7">
                       <div class="card-body mt-2 p-0 mb-0 ml-0">
-                        <h5 class="card-title d-flex justify-content-between mb-1 pb-0"><%= booking.campsite.name %></h5>
+                        <h5 class="card-title d-flex justify-content-between mb-1 pb-0"><%= booking.campsite.name.truncate(20) %></h5>
                         <p class="card-text mb-1 p-0"><small class="text-muted"><i class="fas fa-user-friends"></i>&nbsp;
                         <%= booking.number_of_guest %> </small>
                         <small class="text-muted ml-2">
@@ -48,9 +48,9 @@
                       <p class="card-text mb-1 p-0"><small class="text-muted">To: <%= booking.end_date.strftime("%A, %b %d") %></small></p>
                       <p class="card-text mb-1 p-0"><small class="text-muted">Number of Nights: <%= (booking.end_date - booking.start_date).to_i %></small></p>    
                       <% unless booking.review.nil? %>
-                        <p class="text-muted" >
-                          review: <%= booking.review.rating %>
-                        </p>
+                        <p class="card-text mb-1 p-0"><small class="text-muted">
+                        review: <%= booking.review.rating %> <i class="fas fa-star"></i>
+                        </small></p>
                       <% else %>
                         <%= simple_form_for([booking, @review], html: { class: "review_form_#{index}" }) do |f| %>
                           <%= f.input :rating, as: :select, collection: (1..5).to_a, label: "Rate your experience", input_html:{id: "review_rating_#{index}", class: "review_rating"} %>
