@@ -1,11 +1,9 @@
 
 <div class="container">
-
   <div class="campsite-header" >
     <h1><%= @campsite.name %></h1>
     <p><%= @campsite.address %></p>
   </div>
-
   <div class="row">
     <div class="col-7">
           <div class="campsite-img">
@@ -37,7 +35,6 @@
                 </div> 
               </div>
             <% end %>
-
           </div>
        <% else %>          
           <div class="booking-card">
@@ -49,7 +46,6 @@
               <%= f.submit "Reserve", :class => "camp-book-bttn"%>
             <% end %>
           </div>
-        
           <% if user_signed_in? && !current_user.bookings.where(campsite_id:@campsite.id).empty? %>
               <div class="booking-card mt-3">
               <p> You have booked campsite: <%=@campsite.name%> </p>    
