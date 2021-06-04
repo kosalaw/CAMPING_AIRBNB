@@ -1,6 +1,7 @@
 require 'faker'
 require "open-uri"
 
+Review.destroy_all
 Booking.destroy_all
 Campsite.destroy_all
 User.destroy_all

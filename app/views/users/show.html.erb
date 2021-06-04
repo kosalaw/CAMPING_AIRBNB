@@ -16,9 +16,8 @@
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="container">
       <div class="row">
-        <% @bookings.each do |booking| %>
+        <% @bookings.each_with_index do |booking, index| %>
           <div class="col-sm-6 my-3">
-            <%= link_to campsite_path(booking.campsite.id) do %>
               <div class="card mb-0 p-0 border-radius-card border-shadow-all" style="height:236px">
                 <div class="row g-0">
                   <div class="col-md-5 mb-0 align-items-center">
@@ -30,7 +29,9 @@
                   </div>
                   <div class="col-md-7">
                       <div class="card-body mt-2 p-0 mb-0 ml-0">
-                        <h5 class="card-title d-flex justify-content-between mb-1 pb-0"><%= booking.campsite.name.truncate(20) %></h5>
+                      <%= link_to campsite_path(booking.campsite.id) do %>
+                        <h5 class="card-title d-flex justify-content-between mb-1 pb-0"><%= booking.campsite.name.truncate(18) %></h5>
+                      <% end %>
                         <p class="card-text mb-1 p-0"><small class="text-muted"><i class="fas fa-user-friends"></i>&nbsp;
                         <%= booking.number_of_guest %> </small>
                         <small class="text-muted ml-2">
@@ -52,8 +53,8 @@
                         review: <%= booking.review.rating %> <i class="fas fa-star"></i>
                         </small></p>
                       <% else %>
-                        <%= simple_form_for([booking, @review], html: { class: "review_form_#{index}" }) do |f| %>
-                          <%= f.input :rating, as: :select, collection: (1..5).to_a, label: "Rate your experience", input_html:{id: "review_rating_#{index}", class: "review_rating"} %>
+                        <%= simple_form_for([booking, @review], html: { class: "form_review_rating_#{index}" }) do |f| %>
+                          <%= f.input :rating, as: :select, collection: (1..5).to_a, label: false, input_html:{id: "review_rating_#{index}", class: "review_rating_stars"} %>
                         <% end %>
                       <% end %>
                       <div class="card-body d-flex align-items-end ml-0 absolute-position">
@@ -64,7 +65,6 @@
                   </div>
                 </div>
               </div>
-            <% end %>
           </div>
         <% end %>
       </div>
