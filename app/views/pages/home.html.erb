@@ -1,11 +1,12 @@
 <style>
   .front-text{ margin-top: 250px; text-align: center; text-shadow: 1px 1px 4px rgba(0,0,0, 0.3);}
+  # .grid{display:grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;}
 </style>
 
 <div class="banner">
   <div class="container d-flex justify-content-center my-5 pt-5">   
    <div class="home-search-bar">
-      <form action="/campsites" accept-charset="UTF-8" method="get" class="d-flex justify-content-center align-items-stretch">
+      <form action="/campsites" accept-charset="UTF-8" method="get" class="d-flex grid justify-content-center align-items-stretch">
         <input type="text" name="location" id="location" class="left" placeholder="Where are you camping?" required>
         <input type="date" name="start" id="start" class="form-control date-input input-border" placeholder="Start date" required>
         <input type="date" name="end" id="end" class="form-control date-input input-border" placeholder="End date" required>
@@ -18,8 +19,6 @@
     <h1>Find a campsite for you!</h1>
   </div>
 </div>
-
-
 
 
 
