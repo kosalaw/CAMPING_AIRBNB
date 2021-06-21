@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg bg-black">
   <a class="navbar-brand" href="/"><h1>CAMPING AIRBNB</h1></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
         <a class="nav-link" href="/">Home | </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/campsites">Campsites Avaliable |</a>
+        <a class="nav-link" href="/campsites">Campsites Available |</a>
       </li>
       <% if user_signed_in? %>
       <li class="nav-item"><a class="nav-link" <%= link_to "My Account | ",  my_account_path(current_user) %> </a></li>

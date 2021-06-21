@@ -1,16 +1,86 @@
 
 <div class="container">
-  <h2>name: <%= @campsite.name %></h2>
-  <h4>address: <%= @campsite.address %></h4>
-  <h4>description: <%= @campsite.description %></h4>
-  <h4>Price per night: <%= @campsite.price_per_night %></h4>
-  <h4>Guest capacity: <%= @campsite.capacity %></h4>
+  <div class="campsite-header" >
+    <h1><%= @campsite.name %></h1>
+    <p><%= @campsite.address %></p>
+  </div>
+  <div class="row">
+    <div class="col-7">
+          <div class="campsite-img">
+            <% if @campsite.photo.attached? %>
+              <%= cl_image_tag @campsite.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <%= image_tag "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3300&q=80", alt: "Card image cap", width: 200, class: "card-img-top" %>
+            <% end %>
+          </div>
+          <br>
+          <p>Max Guests: <%= @campsite.capacity %></p>
+          <p>Description: <%= @campsite.description %></p>
+     </div>
 
-  <h1>book <%=@campsite.name%> </h1>
-  <%= simple_form_for [@campsite, @booking] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :number_of_guest, as: :numeric %>
-    <%= f.submit %>
-  <% end %>
+      <div class="col">
+       <% if user_signed_in? && current_user == @campsite.user%>
+          <div class="booking-card">
+            <p>This is your campsite</p>
+            <p><b><i>Upcomming bookings for</i></b> <%=@campsite.name%></p>
+            <% @campsite.bookings.each do |booking| %>
+              <div class="border-bottom mt-3">
+                <div class="owner-card d-flex">
+                  <p id="oc-bkn-dtls"><strong><i>Booked for:</i></strong>&nbsp;<%= booking.start_date.strftime("%A, %b %d")%> -
+                  <%= booking.end_date.strftime("%A, %b %d")%> </p>
+                </div>
+                <div>
+                <i class="fas fa-user-friends"></i>: <%= booking.number_of_guest%> <br />
+                <p> <strong><i> By </i></strong>&nbsp;<%= booking.user.email%> </p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+       <% else %>
+          <div class="booking-card">
+            <h4> Book <%=@campsite.name%> for £<%= (@campsite.price_per_night).to_i %> / night</h4>
+            <%= simple_form_for [@campsite, @booking] do |f| %>
+              <%= f.input :start_date, as: :date, html5: true, :label => "Language" %>
+              <%= f.input :end_date, as: :date, html5: true %>
+              <%= f.input :number_of_guest, :collection => 1..@campsite.capacity, :prompt => "Guests"%>
+              <%= f.submit "Reserve", :class => "camp-book-bttn"%>
+            <% end %>
+          </div>
+          <% if user_signed_in? && !current_user.bookings.where(campsite_id:@campsite.id).empty? %>
+              <div class="booking-card mt-3">
+              <p> You have booked campsite: <%=@campsite.name%> </p>
+              <p> Tips before your arrived: </p>
+              <ol>
+                <li>PRACTICE SETTING UP THE TENT AT HOME</li>
+                <li>MAKE CAMPFIRE-FRIENDLY MEALS AHEAD OF TIME</li>
+                <li>BRING EXTRA PADDING</li>
+                <li>PACK GOOD COFFEE</li>
+                <li>WATERPROOF YOUR TENT</li>
+                <li>PACK CARFULLY & MAKE A LIST</li>
+                <li>TAKE ADVANTAGE OF CAMPSITE AMENITIES</li>
+                <li>LEAVE THE CAMPSITE AS YOU FOUND IT</li>
+                <li>ARRIVE IN DAYLIGHT</li>
+                <li>GET THE RIGHT PEGS</li>
+              </ol>
+              <div class="happy-camping d-flex">
+                <p>Happy Camping!!!</p>
+                <i class="fas fa-campground ml-2"></i>
+              </div>
+            </div>
+          <% end %>
+       </div>
+      <% end %>
+   </div>
+
+  <!-- MAP at bottom of page -->
+  <div class="col-12">
+    <div id="map"
+      style="width: 100%; height: 500px; border-radius: 4px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+
+
 </div>

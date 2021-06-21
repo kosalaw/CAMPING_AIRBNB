@@ -1,16 +1,70 @@
-<div class="container d-flex justify-content-center">
-  <div class="row">
-    <h1 class="camp-h1">List of all Campsites</h1>
-  </div>
-</div>
-<div class="container text-dark">
-  <% @campsites.each do |campsite| %>
-    <div class="card">
-      <h3>name: <%= link_to campsite.name, campsite_path(campsite.id)%></h3>
-      <h4>address: <%= campsite.address %></h4>
-      <h4>description: <%= campsite.description %></h4>
-      <h4>Price per night: <%= campsite.price_per_night %></h4>
-      <h4>Guest capacity: <%= campsite.capacity %></h4>
+<style>
+  a  {color: white;}
+  .description-clamp   { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+  .div-card-price  { margin-bottom: 0px; padding-bottom: 1px; position: absolute; bottom: 0px; right: 0px;}
+  .div-my-campsite  { position: absolute; bottom: 0px; left: 2px; margin-bottom: 0px; padding-bottom: 4px;}
+  .my-campsite-text  { font-weight: 400; text-align: center; padding: 0.375rem 0.75rem; font-size: 1rem; border-radius: 2px; color: black; background-color: #1EDD88;}
+  #map { border-radius: 4px;}
+  .front-text { margin-top: 250px; text-align: center; text-shadow: 1px 1px 4px rgba(0,0,0, 0.3);}
+</style>
+
+<div class="container col-10" style="position: relative;">
+  <div class="mb-2 left-side">
+    <div class="row g-0">
+      <div class="col-6">
+        <% @campsites.each_with_index do |campsite, i| %>
+          <%= link_to campsite_path(campsite.id) do %>
+            <div class="card mb-3 p-0 border-radius-card">
+              <div class="row g-0">
+                <div class="col-md-5 mb-0 align-items-center">
+                  <% if campsite.photo.attached? %>
+                    <%= cl_image_tag campsite.photo.key, crop: :fill, class: "card-img-top" %>
+                  <% else %>
+                    <%= image_tag "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3300&q=80", alt: "Card image cap", width: 200, class: "card-img-top" %>
+                  <% end %>
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body mt-2 p-0 mb-0 ml-0">
+                    <h5 class="card-title d-flex justify-content-between mb-1 pb-0"><%= campsite.name %></h5>
+                    <p class="card-text mb-1 p-0"><small class="text-muted"><i class="fas fa-user-friends"></i>&nbsp;
+                    <%= campsite.capacity %> </small></p>
+                  </div>
+                  <div class="border-bottom-p">
+                  </div>
+                    <p class="description-clamp card-text mb-1 p-0"><small class="text-muted"> <%= campsite.description %></small></p>
+                  <div class="div-my-campsite">
+                    <% if user_signed_in? && campsite.user == current_user %>
+                      <h5 class="my-campsite-text m-0">My Campsite</h5>
+                    <% end %>
+                  </div>
+                  <div class="div-card-price card-body d-flex align-items-end ml-0 absolute-position">
+                    <h5 class="m-0">£<%= campsite.price_per_night %>0</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+        <div class="col-6">
+          <% if !@campsites[0].nil? %>
+            <div id="map"
+              style="width: 100%; height: 100vh; position: sticky; top: 0px;"
+              data-markers="<%= @markers.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          <% end %>
+        </div>
     </div>
-  <% end %>
+  </div>
+  <% if @campsites[0].nil? %>
+    <div class="front-text">
+      <h1>No results...</h1>
+    </div>
+  <% end -%>
+
 </div>
+
+
+

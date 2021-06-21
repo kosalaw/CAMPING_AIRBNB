@@ -10,7 +10,6 @@
   ul a{
     font-size: 24px;
     color: white;
-
     margin-right: 6px;
   }
 }
@@ -25,12 +24,18 @@
   input{
     padding: 10px;
     margin: 3px 0px;
-  }
-  
+  } 
 }
 .camp-h1 {
   font-weight: 600;
 }
 h5 {
   color: #040F06;
+}
+a {
+  color: white;
+}
+.btn-signup {
+  font-weight: 800;
+  color: white;
 }
