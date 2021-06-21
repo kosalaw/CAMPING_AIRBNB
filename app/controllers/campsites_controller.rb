@@ -1,22 +1,41 @@
 class CampsitesController < ApplicationController
 
   def index
-    p params
-
+    # HOMEPAGE search bar filtering
     if params[:location].present? #&& params[:guest].present?
       sql_query = " \
         campsites.address @@ :location \
         AND campsites.capacity >= :guest \
       "
       campsites = Campsite.where(sql_query, location: "%#{params[:location]}%", guest: params[:guest].to_i)
-
       @campsites = check_availability(params, campsites)
+      p @campsites.class
+
+      # KEEP THIS LOOP! This one doesnt work if you use '.geocoded'!!!!
+      @markers = @campsites.map do |campsite|
+      {
+        lat: campsite.latitude,
+        lng: campsite.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { campsite: campsite })
+      }
+      end
 
     else
       @campsites = Campsite.all
+      p @campsites.class
+
+      # KEEP THIS LOOP AS WELL! This one DOES work if you use '.geocoded'!!!!
+      @markers = @campsites.geocoded.map do |campsite|
+      {
+        lat: campsite.latitude,
+        lng: campsite.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { campsite: campsite })
+      }
+      end
     end
   end
 
+  # checks which dates are alrady taken at each campsite
   def check_availability(params, campsites)
     # make array of inputed dates
     user_dates = (params[:start]..params[:end]).to_a
@@ -56,6 +75,16 @@ class CampsitesController < ApplicationController
   def show
     @campsite = Campsite.find(params[:id])
     @booking = Booking.new
+    campsite_array = []
+    campsite_array << @campsite
+    # Shows the campsite marker location on map
+    @markers = campsite_array.map do |campsite|
+    {
+      lat: campsite.latitude,
+      lng: campsite.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { campsite: campsite })
+    }
+    end
   end
 
   def new

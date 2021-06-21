@@ -27,8 +27,20 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initMapbox } from '../plugins/init_mapbox';
+import { initStarRating } from '../plugins/init_star_rating';
+import { initUpdateTitle } from '../plugins/letter';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  if (document.querySelector("#banner-typed-text")) {
+  initUpdateTitle();
+  }
+  initMapbox();
+  initStarRating();
 });
+
+
+

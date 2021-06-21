@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :campsites do
     resources :bookings, only: [:create]
   end
-  resources :bookings, only: [:update, :destroy]
+  resources :bookings, only: [:update, :destroy] do
+    resources :reviews, only: [:create]
+  end
   get '/my_account/:id', to: 'users#show', as: 'my_account'
 end
